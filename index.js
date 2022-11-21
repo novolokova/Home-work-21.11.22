@@ -7,7 +7,7 @@
 // * повертати кількість максимальних(однакових) елементів
 // const arrNums = [1, 9, 5, 6 , 7, 9, 4, 6]; =>кількість  2
 
-const arrNums = [555, 9, 5, 9, 5, 5, 6, 7, 5, 19, 62];
+const arrNums = [9, 5, 6, 7, 4, 4, 6, 0];
 
 // first option ***************************
 
@@ -27,20 +27,16 @@ function maxIndex(array) {
 
   for (let i = 0; i < array.length; i++) {
     if (array[i] > firstIndex) {
-      maxIndex = array[i];
       firstIndex = array[i];
+    } else {
+      maxIndex = firstIndex;
     }
-    maxIndex = firstIndex;
-  }
-
-  for (let i = 0; i < array.length; i++) {
     if (maxIndex === array[i]) {
       arr.push(i);
       count++;
     }
   }
-  const lastMaxIndex = arr.pop();
-  return lastMaxIndex;
+  return arr.pop();
 }
 
 console.log(maxIndex(arrNums));
