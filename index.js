@@ -9,14 +9,12 @@
 
 const arrNums = [1, 9, 5, 6, 7, 9, 4, 6];
 
-
-
-// 1 варіант
+// first option ***************************
 
 let count = 0;
 /**
- * 
- * @param {Object []} array 
+ *
+ * @param {Object []} array
  * @returns {number}
  */
 function maxIndex(array) {
@@ -40,7 +38,8 @@ function maxIndex(array) {
       count++;
     }
   }
-  return arr.pop();
+  const lastMaxIndex = arr.pop();
+  return lastMaxIndex;
 }
 
 console.log(maxIndex(arrNums));
@@ -48,7 +47,24 @@ console.log(count);
 
 
 
+// second option  ************************
 
+let count1 = 0;
+function maxElement(array) {
+  if (array.length === 0) {
+    return -1;
+  }
+  const maxElement = array.indexOf(Math.max.apply(null, array));
+  let arr = [];
 
+  for (let i = 0; i < array.length; i++) {
+    if (array[maxElement] === array[i]) {
+      arr.push(i);
+      count1++;
+    }
+  }
+  return arr.pop();
+}
 
-
+console.log(maxElement(arrNums));
+console.log(count1);
