@@ -7,59 +7,60 @@
 // * повертати кількість максимальних(однакових) елементів
 // const arrNums = [1, 9, 5, 6 , 7, 9, 4, 6]; =>кількість  2
 
-const arrNums = [9, 5, 6, 7, 4, 4, 6, 0];
+const arrNums = [1, 9, 5, 6, 7, 9, 4, 6];
 
-// first option ***************************
-
-let count = 0;
 /**
  *
- * @param {Object []} array
+ * @param {[number]} array
  * @returns {number}
  */
 function maxIndex(array) {
   if (array.length === 0) {
     return -1;
   }
-  let firstIndex = array[0];
-  let maxIndex;
-  let arr = [];
+
+  let maxIndex = 0;
 
   for (let i = 0; i < array.length; i++) {
-    if (array[i] > firstIndex) {
-      firstIndex = array[i];
-    } else {
-      maxIndex = firstIndex;
-    }
-    if (maxIndex === array[i]) {
-      arr.push(i);
-      count++;
+    if (array[i] >= array[maxIndex]) {
+      maxIndex = i;
     }
   }
-  return arr.pop();
+  return maxIndex;
 }
 
 console.log(maxIndex(arrNums));
-console.log(count);
 
-// second option  ************************
+/**
+ *
+ * @param {[number]} array
+ * @returns {number}
+ */
+function maxIndexNumElements(array) {
+  let count = 0;
+  let maxIndex = 0;
 
-let count1 = 0;
-function maxElement(array) {
   if (array.length === 0) {
     return -1;
   }
-  const maxElement = Math.max.apply(null, array);
-  let arr = [];
 
   for (let i = 0; i < array.length; i++) {
-    if (array[maxElement] === array[i]) {
-      arr.push(i);
-      count1++;
+    if (array[i] >= array[maxIndex]) {
+      maxIndex = i;
     }
   }
-  return arr.pop();
+
+  for (let i = 0; i < array.length; i++) {
+    if (array[i] === array[maxIndex]) {
+      count++;
+    }
+  }
+  
+  const result = {};
+  result.maxIndex = maxIndex;
+  result.count = count;
+
+  return result;
 }
 
-console.log(maxElement(arrNums));
-console.log(count1);
+console.log(maxIndexNumElements(arrNums));
