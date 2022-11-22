@@ -49,7 +49,7 @@ function maxElement(array) {
   if (array.length === 0) {
     return -1;
   }
-  const maxElement = array.indexOf(Math.max.apply(null, array));
+  const maxElement = Math.max.apply(null, array);
   let arr = [];
 
   for (let i = 0; i < array.length; i++) {
