@@ -29,7 +29,7 @@ function maxIndex(array) {
   return maxIndex;
 }
 
-console.log(maxIndex(arrNums));
+// console.log(maxIndex(arrNums));
 
 /**
  *
@@ -44,18 +44,19 @@ function maxIndexNumElements(array) {
     return -1;
   }
 
-  for (let i = 0; i < array.length; i++) {
-    if (array[i] >= array[maxIndex]) {
-      maxIndex = i;
-    }
-  }
+  // // до другого завдання: Коли у нас нове
+  // максимальне значення, то треба рахувати максимальні знову з початку.
 
   for (let i = 0; i < array.length; i++) {
-    if (array[i] === array[maxIndex]) {
+    if (array[i] >= array[maxIndex]) {
+      if (array[i] > array[maxIndex]) {
+        count = 0;
+      }
+      maxIndex = i;
       count++;
     }
   }
-  
+
   const result = {};
   result.maxIndex = maxIndex;
   result.count = count;
